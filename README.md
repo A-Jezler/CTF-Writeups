@@ -216,7 +216,8 @@ O grupo `cage` tem permissão **rw** no arquivo `.quotes`.
 import os, random
 lines = open("/opt/.dads_scripts/.files/.quotes").read().splitlines()
 quote = random.choice(lines)
-os.system("wall " + quote)  #Input não sanitizado!
+os.system("wall " + quote)
+# Input não sanitizado!
 ```
 
 O script lê `.quotes` e passa diretamente para `os.system()` sem sanitização **Command Injection**.
