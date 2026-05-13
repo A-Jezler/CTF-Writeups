@@ -58,7 +58,7 @@ Três serviços expostos: FTP, SSH e HTTP. Ordem de investigação: FTP → HTTP
 
 ## 2. Enumeração FTP
 
-Teste de acesso anônimo configuração incorreta muito comum em ambientes mal configurados.
+Teste de acesso anônimo, configuração incorreta muito comum em ambientes mal configurados.
 
 ```bash
 ftp 10.66.142.219
