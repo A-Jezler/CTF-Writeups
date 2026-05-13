@@ -1,9 +1,5 @@
 # TryHackMe Writeup "Break Out The Cage"
 
-![TryHackMe](https://img.shields.io/badge/TryHackMe-Break%20Out%20The%20Cage-red?style=for-the-badge&logo=tryhackme)
-![Dificuldade](https://img.shields.io/badge/Dificuldade-Easy-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Pwned%20%F0%9F%92%80-black?style=for-the-badge)
-
 > Writeup completo do room "Break Out The Cage" da plataforma TryHackMe cobrindo reconhecimento, exploração de FTP, quebra de criptografia, injeção de comandos via cron job e escalada de privilégios até root.
 
 ---
