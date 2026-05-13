@@ -1,4 +1,4 @@
-# Break Out The Cage — TryHackMe Writeup
+# Break Out The Cage TryHackMe Writeup
 
 ![TryHackMe](https://img.shields.io/badge/TryHackMe-Break%20Out%20The%20Cage-red?style=for-the-badge&logo=tryhackme)
 ![Dificuldade](https://img.shields.io/badge/Dificuldade-Easy-green?style=for-the-badge)
