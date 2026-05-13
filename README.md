@@ -1,4 +1,4 @@
-# 🔓 Break Out The Cage — TryHackMe Writeup
+# Break Out The Cage — TryHackMe Writeup
 
 ![TryHackMe](https://img.shields.io/badge/TryHackMe-Break%20Out%20The%20Cage-red?style=for-the-badge&logo=tryhackme)
 ![Dificuldade](https://img.shields.io/badge/Dificuldade-Easy-green?style=for-the-badge)
@@ -8,7 +8,7 @@
 
 ---
 
-## 📋 Informações
+## Informações
 
 | Campo | Detalhe |
 |---|---|
@@ -21,7 +21,7 @@
 
 ---
 
-## 🗺️ Índice
+## Índice
 
 1. [Reconhecimento](#1-reconhecimento)
 2. [Enumeração FTP](#2-enumeração-ftp)
@@ -88,7 +88,7 @@ Iz glww A ykftef.... Qjhsvbouuoexcmvwkwwatfllxughhbbcmydizwlkbsidiuscwl
 
 Texto ainda cifrado — análise indica **Cifra de Vigenère**.
 
-> ⚠️ **Vulnerabilidade:** Acesso anônimo ao FTP expondo arquivos com credenciais codificadas.
+> **Vulnerabilidade:** Acesso anônimo ao FTP expondo arquivos com credenciais codificadas.
 
 ---
 
@@ -274,8 +274,8 @@ THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}
 
 | Flag | Valor | Localização |
 |---|---|---|
-| 🏳️ User Flag | `THM{M37AL_0R_P3N_T35T1NG}` | `/home/cage/Super_Duper_Checklist` |
-| 🚩 Root Flag | `THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}` | `/root/email_backup/email_2` |
+| User Flag | `THM{M37AL_0R_P3N_T35T1NG}` | `/home/cage/Super_Duper_Checklist` |
+| Root Flag | `THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}` | `/root/email_backup/email_2` |
 
 ---
 
