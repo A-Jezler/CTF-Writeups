@@ -128,7 +128,8 @@ Iz glww A ykftef.... Qjhsvbouuoexcmvwkwwatfllxughhbbcmydizwlkbsidiuscwl
 
 **Texto decifrado:**
 ```
-Dads Tasks The RAGE...THE CAGE... THE MAN... THE LEGEND!!!!
+Dads Tasks
+The RAGE...THE CAGE... THE MAN... THE LEGEND!!!!
 ...
 In case I forget.... Mydadisghostrideraintthatcoolnocausehesonfirejokes
 ```
