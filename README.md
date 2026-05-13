@@ -138,7 +138,7 @@ In case I forget.... Mydadisghostrideraintthatcoolnocausehesonfirejokes
 - Usuário: `weston`
 - Senha: `Mydadisghostrideraintthatcoolnocausehesonfirejokes`
 
-### 4.2 Decifrando email do cage — Credenciais do Root
+### 4.2 Decifrando email do cage e Credenciais do Root
 
 Após acesso ao sistema (seção 6), encontramos nos emails do cage a string `haiinspsyanileph`. O email dava a dica: *"obsessed with my face"* referência ao filme **Face/Off**.
 
